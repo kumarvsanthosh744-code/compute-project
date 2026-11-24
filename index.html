@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#080a0f">
+  <meta name="description" content="ScamShield AI — responsible scam and impersonation intelligence.">
+  <title>ScamShield AI — Intelligence Console</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{color-scheme:dark;--bg:#080a0f;--panel:#0f131c;--raised:#151b27;--line:rgba(255,255,255,.08);--gold:#d4af37;--gold2:#e6c65c;--text:#f8fafc;--muted:#94a3b8;--dim:#657184;--green:#10b981;--amber:#f59e0b;--red:#ef4444;--tone:var(--gold);--progress:0;--angle:0deg;--glow:.04;--sans:'Plus Jakarta Sans',Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;--mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Consolas,monospace;--radius:19px;font-family:var(--sans);font-synthesis:none;text-rendering:optimizeLegibility;font-variant-numeric:tabular-nums}
+    *{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 12% 0%,rgba(212,175,55,.065),transparent 35%),linear-gradient(145deg,#080a0f,#0a0d13 48%,#080a0f);color:var(--text);overflow-x:hidden}button,input,textarea{font:inherit}button{color:inherit}.ambient{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;opacity:.42;z-index:0}.ambient:after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 45%,transparent 35%,rgba(8,10,15,.45) 100%)}.app{position:relative;z-index:1;max-width:1480px;margin:auto;padding:0 48px 48px}.topbar{height:91px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:24px}.brand{display:flex;align-items:center;gap:14px;min-width:260px}.emblem{width:40px;height:40px;border:1px solid rgba(212,175,55,.4);border-radius:13px;display:grid;place-items:center;color:var(--gold2);background:linear-gradient(145deg,rgba(212,175,55,.11),rgba(212,175,55,.015));box-shadow:inset 0 1px rgba(255,255,255,.07)}.emblem svg{width:21px}.brand-title{font-size:15px;font-weight:700;letter-spacing:.025em}.brand-sub{font-size:10px;color:var(--muted);margin-top:4px;letter-spacing:.07em;text-transform:uppercase}.header-tools{display:flex;align-items:center;gap:15px}.health{display:flex;align-items:center;gap:9px;border:1px solid var(--line);padding:9px 12px;border-radius:999px;color:var(--muted);font-size:11px;white-space:nowrap}.health-dot{width:7px;height:7px;border-radius:50%;background:var(--dim);box-shadow:0 0 0 3px rgba(148,163,184,.1)}.health[data-state="ok"] .health-dot{background:var(--green);box-shadow:0 0 0 3px rgba(16,185,129,.12)}.health[data-state="down"] .health-dot{background:var(--red);box-shadow:0 0 0 3px rgba(239,68,68,.12)}.health button{background:none;border:0;color:var(--gold2);cursor:pointer;padding:0 0 0 4px;font-size:10px}.key-wrap{display:flex;align-items:center;gap:8px}.key-wrap label{font-size:10px;color:var(--dim);letter-spacing:.09em;text-transform:uppercase}.key-field{display:flex;align-items:center;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.025);padding-right:9px}.key-field input{width:145px;background:transparent;color:var(--text);border:0;outline:none;padding:9px 10px;font:11px var(--mono)}.key-field input::placeholder{color:#596273}.reveal{border:0;background:none;color:var(--muted);cursor:pointer;font-size:10px}.hero{display:flex;align-items:flex-end;justify-content:space-between;padding:34px 0 24px}.eyebrow,.section-kicker{font:10px var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--gold2)}h1{font-size:clamp(26px,3vw,39px);letter-spacing:-.045em;line-height:1.12;margin:10px 0 8px;font-weight:600}.hero p{margin:0;color:var(--muted);font-size:13px}.hero-meta{font:10px var(--mono);color:var(--dim);letter-spacing:.08em;display:flex;align-items:center;gap:10px;padding-bottom:4px}.hero-meta:before{content:"";height:1px;width:30px;background:var(--gold)}.workspace{display:grid;grid-template-columns:1.12fr .88fr;gap:20px;align-items:stretch}.panel{background:linear-gradient(150deg,rgba(21,27,39,.88),rgba(15,19,28,.93));border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 18px 60px rgba(0,0,0,.17),inset 0 1px rgba(255,255,255,.025)}.studio{padding:25px 26px 23px}.panel-heading{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px}.panel-title{font-size:15px;font-weight:600;margin-top:6px}.panel-caption{color:var(--muted);font-size:11px;margin-top:5px}.serial{font:10px var(--mono);color:var(--dim)}.mode-switch{display:grid;grid-template-columns:1fr 1fr;background:#090c12;border:1px solid var(--line);padding:4px;border-radius:12px;gap:4px;margin-bottom:18px}.mode-btn{border:0;background:transparent;color:var(--muted);border-radius:9px;padding:11px 12px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:9px;font-size:11px;transition:background .25s,color .25s,box-shadow .25s}.mode-btn svg{width:15px;height:15px}.mode-btn.active{background:var(--raised);color:var(--text);box-shadow:0 1px 6px rgba(0,0,0,.24),inset 0 0 0 1px rgba(255,255,255,.065)}.mode-btn.active svg{color:var(--gold2)}.sample-row{display:flex;gap:8px;align-items:center;margin-bottom:13px;flex-wrap:wrap}.sample-label{font:9px var(--mono);letter-spacing:.1em;color:var(--dim);margin-right:2px;text-transform:uppercase}.sample{border:1px solid var(--line);background:rgba(255,255,255,.025);border-radius:8px;padding:7px 10px;color:#b9c1cd;font-size:10px;cursor:pointer;transition:border-color .2s,color .2s,background .2s}.sample:hover{border-color:rgba(212,175,55,.34);color:var(--gold2);background:rgba(212,175,55,.04)}.input-area{width:100%;min-height:228px;resize:vertical;border:1px solid var(--line);background:rgba(5,8,13,.5);border-radius:13px;padding:15px;color:var(--text);outline:none;font-size:12px;line-height:1.8;transition:border-color .2s,box-shadow .2s}.input-area:focus{border-color:rgba(212,175,55,.38);box-shadow:0 0 0 3px rgba(212,175,55,.045)}.input-area::placeholder{color:#626d7c}.input-foot{display:flex;justify-content:space-between;color:var(--dim);font:9px var(--mono);padding:8px 2px 0}.audio-zone{border:1px dashed rgba(255,255,255,.15);border-radius:14px;min-height:228px;background:rgba(5,8,13,.42);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:22px;transition:border-color .2s,background .2s}.audio-zone.drag{border-color:var(--gold);background:rgba(212,175,55,.045)}.upload-mark{width:48px;height:48px;border:1px solid rgba(212,175,55,.25);border-radius:15px;display:grid;place-items:center;color:var(--gold2);background:rgba(212,175,55,.05);margin-bottom:13px}.upload-mark svg{width:21px}.upload-title{font-size:12px;font-weight:600}.upload-hint{font-size:10px;color:var(--muted);margin-top:6px}.choose-file{margin-top:15px;border:1px solid rgba(212,175,55,.35);background:rgba(212,175,55,.07);color:var(--gold2);border-radius:8px;padding:8px 13px;font-size:10px;cursor:pointer}.file-meta{display:none;width:100%;margin-top:18px;padding:12px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.025)}.file-meta.visible{display:block}.file-line{display:flex;justify-content:space-between;align-items:center;font-size:10px;color:#d6dbe3;gap:12px}.file-size{font:9px var(--mono);color:var(--muted);white-space:nowrap}.file-meta audio{display:block;width:100%;height:30px;margin-top:10px}.audio-zone input{display:none}.run-row{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-top:18px}.privacy-note{font-size:9px;color:var(--dim);display:flex;gap:7px;align-items:center}.privacy-note svg{width:13px;color:var(--gold)}.run-btn{border:1px solid rgba(230,198,92,.52);background:linear-gradient(135deg,#d8b746,#c7a433);color:#14130e;border-radius:10px;padding:12px 16px;font-size:11px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:10px;box-shadow:0 6px 20px rgba(212,175,55,.1);transition:transform .2s,filter .2s,opacity .2s}.run-btn:hover:not(:disabled){transform:translateY(-1px);filter:brightness(1.06)}.run-btn:disabled{opacity:.64;cursor:wait}.run-btn svg{width:15px}.spinner{display:none;width:13px;height:13px;border:1.5px solid rgba(20,19,14,.3);border-top-color:#14130e;border-radius:50%;animation:spin .7s linear infinite}.run-btn.busy .spinner{display:block}.run-btn.busy .run-icon{display:none}@keyframes spin{to{transform:rotate(360deg)}}.error-box{display:none;margin-top:14px;border:1px solid rgba(239,68,68,.28);background:rgba(239,68,68,.055);color:#fca5a5;border-radius:10px;padding:11px 13px;font-size:11px;line-height:1.6}.error-box.visible{display:block}.pipeline{margin-top:19px;border-top:1px solid var(--line);padding-top:17px}.pipe-label{font:9px var(--mono);text-transform:uppercase;letter-spacing:.12em;color:var(--dim);margin-bottom:13px}.steps{display:grid;grid-template-columns:repeat(4,1fr);position:relative}.steps:before{content:"";position:absolute;left:5%;right:5%;top:7px;height:1px;background:var(--line)}.step{position:relative;display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;color:var(--dim);font-size:9px;transition:color .25s}.step-dot{width:15px;height:15px;border:1px solid #354052;border-radius:50%;background:#10151e;position:relative;z-index:1;transition:all .3s}.step.active{color:var(--gold2)}.step.active .step-dot{border-color:var(--gold);box-shadow:0 0 0 4px rgba(212,175,55,.08),inset 0 0 0 4px #10151e;background:var(--gold)}.step.done{color:#8da99d}.step.done .step-dot{background:var(--green);border-color:var(--green);box-shadow:0 0 0 3px rgba(16,185,129,.09)}.dossier{padding:25px 26px;position:relative;overflow:hidden;min-height:590px}.dossier:before{content:"";position:absolute;inset:-50% -50% auto auto;width:350px;height:350px;border-radius:50%;background:radial-gradient(circle,rgba(212,175,55,var(--glow)),transparent 68%);pointer-events:none;transition:background .5s}.dossier-head{position:relative;display:flex;justify-content:space-between;align-items:flex-start}.live-tag{display:flex;align-items:center;gap:7px;font:9px var(--mono);color:var(--dim);letter-spacing:.1em;text-transform:uppercase}.live-tag i{width:6px;height:6px;border-radius:50%;background:var(--dim)}.live-tag.ready i{background:var(--green);box-shadow:0 0 8px rgba(16,185,129,.35)}.idle-state{min-height:485px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative}.idle-orbit{width:126px;height:126px;border:1px solid rgba(212,175,55,.14);border-radius:50%;display:grid;place-items:center;position:relative;margin-bottom:24px}.idle-orbit:before,.idle-orbit:after{content:"";position:absolute;border:1px solid rgba(255,255,255,.055);border-radius:50%}.idle-orbit:before{inset:12px}.idle-orbit:after{inset:-10px;border-style:dashed;animation:orbit 45s linear infinite}.idle-shield{width:39px;color:rgba(230,198,92,.75)}@keyframes orbit{to{transform:rotate(360deg)}}.idle-title{font-size:15px;font-weight:600}.idle-copy{max-width:265px;color:var(--muted);font-size:11px;line-height:1.7;margin-top:8px}.idle-index{font:9px var(--mono);letter-spacing:.12em;color:var(--dim);margin-top:24px}.report{position:relative;display:none}.report.visible{display:block;animation:reveal .55s cubic-bezier(.2,.7,.2,1) both}@keyframes reveal{from{opacity:0;transform:translate3d(0,9px,0)}to{opacity:1;transform:translate3d(0,0,0)}}.result-top{display:grid;grid-template-columns:155px 1fr;gap:21px;align-items:center;padding:17px 0 21px;border-bottom:1px solid var(--line)}.gauge-wrap{width:150px;height:150px;position:relative;display:grid;place-items:center}.gauge{width:150px;height:150px;transform:rotate(-90deg);overflow:visible}.gauge-track,.gauge-value{fill:none;stroke-width:6}.gauge-track{stroke:#252d3a}.gauge-value{stroke:var(--tone);stroke-linecap:round;stroke-dasharray:465;stroke-dashoffset:465;filter:drop-shadow(0 0 5px color-mix(in srgb,var(--tone),transparent 65%));transition:stroke-dashoffset 1.15s cubic-bezier(.22,.7,.2,1),stroke .45s}.gauge-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}.score{font:600 40px var(--mono);letter-spacing:-.08em;line-height:1;color:var(--text)}.score-unit{font:9px var(--mono);color:var(--dim);margin-top:6px;letter-spacing:.12em}.verdict{display:inline-flex;align-items:center;gap:7px;padding:6px 9px;border:1px solid color-mix(in srgb,var(--tone),transparent 72%);background:color-mix(in srgb,var(--tone),transparent 92%);color:var(--tone);border-radius:7px;font:10px var(--mono);letter-spacing:.02em}.verdict:before{content:"";width:5px;height:5px;border-radius:50%;background:currentColor}.scam-type{font-size:16px;font-weight:600;letter-spacing:-.02em;margin:10px 0 9px;line-height:1.35}.badges{display:flex;gap:7px;align-items:center;flex-wrap:wrap}.badge{font:9px var(--mono);border:1px solid var(--line);border-radius:6px;padding:5px 7px;color:var(--muted)}.fallback-note{display:none;margin-top:12px;border:1px solid rgba(245,158,11,.22);background:rgba(245,158,11,.05);padding:9px 10px;border-radius:8px;color:#e9bd6b;font-size:10px;line-height:1.5}.fallback-note.visible{display:block}.signals{padding:18px 0 17px;border-bottom:1px solid var(--line)}.subhead{display:flex;align-items:center;justify-content:space-between;margin-bottom:15px}.subhead-title{font-size:11px;font-weight:600}.subhead-note{font:9px var(--mono);color:var(--dim)}.signal-list{display:grid;gap:13px}.signal-row{display:grid;grid-template-columns:minmax(130px,1fr) minmax(95px,1.25fr) 28px;gap:11px;align-items:center}.signal-name{font-size:9px;color:#b7c0cd;line-height:1.3}.meter{height:5px;background:#252d39;border-radius:99px;overflow:hidden}.meter-fill{height:100%;width:0;background:linear-gradient(90deg,color-mix(in srgb,var(--tone),#8c7a42 25%),var(--tone));border-radius:99px;transform:translateZ(0);transition:width .85s cubic-bezier(.22,.7,.2,1)}.signal-num{text-align:right;font:9px var(--mono);color:#d3d9e2}.explanation-block{padding:16px 0;border-bottom:1px solid var(--line)}.body-copy{font-size:10px;color:#b8c1cd;line-height:1.75;margin:8px 0 0}.flags-block{padding:16px 0;border-bottom:1px solid var(--line)}.flag-list{padding:0;margin:10px 0 0;list-style:none;display:grid;gap:7px}.flag-list li{font-size:10px;color:#d2b9a9;line-height:1.45;display:flex;gap:8px;align-items:flex-start;animation:reveal .42s both;animation-delay:var(--delay,0ms)}.flag-list li:before{content:"";width:5px;height:5px;border-radius:50%;background:var(--tone);margin-top:4px;flex:none}.no-flags{font-size:10px;color:var(--muted);margin:9px 0 0}.action-box{margin-top:15px;padding:12px 13px;border:1px solid rgba(212,175,55,.19);background:linear-gradient(110deg,rgba(212,175,55,.06),rgba(212,175,55,.015));border-radius:10px;display:flex;gap:10px;align-items:flex-start}.action-icon{color:var(--gold2);width:15px;flex:none;margin-top:1px}.action-label{font:9px var(--mono);color:var(--gold2);text-transform:uppercase;letter-spacing:.1em}.action-text{font-size:10px;color:#dbe0e7;line-height:1.6;margin-top:5px}.footer{display:flex;justify-content:space-between;color:#576171;font:9px var(--mono);padding:18px 2px 0;letter-spacing:.035em}.footer-mark{color:#8f7840}
+    @media(max-width:1050px){.app{padding:0 27px 35px}.key-wrap label{display:none}.workspace{grid-template-columns:1fr .93fr}.studio,.dossier{padding:21px}.signal-row{grid-template-columns:minmax(112px,1fr) minmax(80px,1fr) 26px}.result-top{grid-template-columns:132px 1fr;gap:15px}.gauge-wrap,.gauge{width:130px;height:130px}.score{font-size:35px}}
+    @media(max-width:800px){.app{padding:0 20px 28px}.topbar{height:78px}.brand{min-width:0}.brand-sub{max-width:210px;line-height:1.35}.header-tools{gap:8px}.key-field input{width:100px}.health{padding:8px}.health-label{display:none}.hero{padding:26px 0 20px}.hero-meta{display:none}.workspace{grid-template-columns:1fr}.dossier{min-height:500px}.idle-state{min-height:350px}.result-top{grid-template-columns:150px 1fr}.gauge-wrap,.gauge{width:145px;height:145px}.score{font-size:39px}}
+    @media(max-width:520px){.app{padding:0 13px 24px}.topbar{height:auto;min-height:74px;gap:10px}.emblem{width:35px;height:35px;border-radius:11px}.brand{gap:9px}.brand-title{font-size:13px}.brand-sub{font-size:8px;max-width:155px}.header-tools{gap:7px}.key-field input{width:81px;padding:8px 7px;font-size:9px}.key-field{padding-right:6px}.reveal{font-size:9px}.health{padding:7px 9px}.health button{font-size:9px}.hero{padding:22px 0 17px}h1{font-size:27px}.hero p{font-size:11px;max-width:330px;line-height:1.6}.studio,.dossier{padding:17px 15px}.panel-heading{margin-bottom:15px}.mode-btn{font-size:10px;padding:10px 5px}.sample-row{gap:6px}.sample{padding:7px 8px;font-size:9px}.sample-label{width:100%;margin-bottom:1px}.input-area{min-height:205px;font-size:11px;padding:12px}.audio-zone{min-height:205px}.run-row{align-items:flex-start;flex-direction:column}.run-btn{width:100%;justify-content:center;padding:13px}.privacy-note{order:2}.pipeline{margin-top:16px}.step{font-size:8px}.dossier{min-height:450px}.idle-state{min-height:325px}.result-top{grid-template-columns:112px 1fr;gap:12px;padding:17px 0}.gauge-wrap,.gauge{width:108px;height:108px}.gauge-track,.gauge-value{stroke-width:7}.score{font-size:31px}.score-unit{font-size:8px}.scam-type{font-size:14px}.verdict{font-size:9px}.badge{font-size:8px;padding:4px 6px}.signal-row{grid-template-columns:105px 1fr 24px;gap:7px}.signal-name{font-size:8px}.signals{padding:15px 0}.signal-list{gap:12px}.footer{font-size:8px;gap:12px}.footer span:last-child{text-align:right}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.ambient{display:none}}
+  </style>
+</head>
+<body>
+  <canvas class="ambient" id="ambient" aria-hidden="true"></canvas>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand"><div class="emblem" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2.8 20 6v5.3c0 5.1-3.4 8.4-8 10-4.6-1.6-8-4.9-8-10V6l8-3.2Z" stroke="currentColor" stroke-width="1.35"/><path d="m8.6 12 2.2 2.2 4.8-5" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><div class="brand-title">ScamShield AI</div><div class="brand-sub">Responsible AI · Impersonation Intelligence</div></div></div>
+      <div class="header-tools">
+        <div class="health" id="healthPill" data-state="checking" role="status"><i class="health-dot"></i><span class="health-label" id="healthText">Checking backend</span><button type="button" id="healthRetry" aria-label="Check backend connection">Reconnect</button></div>
+        <div class="key-wrap"><label for="apiKey">API key</label><div class="key-field"><input id="apiKey" type="password" autocomplete="off" placeholder="Server key" aria-label="Optional Gemini API key"><button class="reveal" id="toggleKey" type="button">SHOW</button></div></div>
+      </div>
+    </header>
+    <section class="hero"><div><div class="eyebrow">Trust &amp; safety intelligence / 01</div><h1>Pause. Verify. Proceed<br>with confidence.</h1><p>Assess suspicious messages and voice clips with explainable risk signals.</p></div><div class="hero-meta">SECURE ANALYSIS CONSOLE</div></section>
+    <main class="workspace">
+      <section class="panel studio" aria-labelledby="studioTitle">
+        <div class="panel-heading"><div><div class="section-kicker">Input studio</div><div class="panel-title" id="studioTitle">Submit for analysis</div><div class="panel-caption">Content is assessed for manipulation and impersonation signals.</div></div><span class="serial">SS / 001</span></div>
+        <div class="mode-switch" role="tablist" aria-label="Analysis input type"><button class="mode-btn active" id="textMode" type="button" role="tab" aria-selected="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 5.5h14M5 10h14M5 14.5h9M5 19h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Message / Transcript</button><button class="mode-btn" id="audioMode" type="button" role="tab" aria-selected="false"><svg viewBox="0 0 24 24" fill="none"><path d="M4 10v4m4-8v12m4-16v20m4-15v10m4-13v16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Voice / Audio</button></div>
+        <div id="textPanel"><div class="sample-row"><span class="sample-label">Quick scenarios</span><button type="button" class="sample" data-sample="benign">Benign note</button><button type="button" class="sample" data-sample="bank">Fake bank / OTP</button><button type="button" class="sample" data-sample="arrest">Digital arrest call</button></div><textarea class="input-area" id="messageText" maxlength="20000" placeholder="Paste a suspicious message or call transcript here…" aria-label="Suspicious message or call transcript"></textarea><div class="input-foot"><span>PRIVATE ANALYSIS · MAX 20,000 CHARACTERS</span><span id="charCount">0 / 20,000</span></div></div>
+        <div id="audioPanel" hidden><div class="audio-zone" id="dropZone"><div class="upload-mark"><svg viewBox="0 0 24 24" fill="none"><path d="M12 15V4m0 0L8 8m4-4 4 4M5 14v5h14v-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="upload-title">Choose an audio recording</div><div class="upload-hint">MP3, WAV, M4A, OGG or WEBM · Up to 20 MB</div><button type="button" class="choose-file" id="chooseFile">Browse files</button><input type="file" id="audioFile" accept=".mp3,.wav,.m4a,.ogg,.webm,audio/*"><div class="file-meta" id="fileMeta"><div class="file-line"><span id="fileName"></span><span class="file-size" id="fileSize"></span></div><audio id="audioPreview" controls></audio></div></div></div>
+        <div class="error-box" id="errorBox" role="alert"></div>
+        <div class="run-row"><div class="privacy-note"><svg viewBox="0 0 24 24" fill="none"><path d="M6 10V7a6 6 0 0 1 12 0v3m-13 0h14v11H5V10Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>Audio uploads are removed after analysis.</div><button class="run-btn" id="runScan" type="button"><span class="spinner" aria-hidden="true"></span><svg class="run-icon" viewBox="0 0 24 24" fill="none"><circle cx="10.8" cy="10.8" r="6.8" stroke="currentColor" stroke-width="1.6"/><path d="m16 16 4.2 4.2M10.8 7.2v3.6l2.3 1.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span class="run-label">Run Intelligence Scan</span></button></div>
+        <div class="pipeline"><div class="pipe-label">Analysis pipeline</div><div class="steps" id="pipeline"><div class="step"><i class="step-dot"></i><span>Input Captured</span></div><div class="step"><i class="step-dot"></i><span>Signal Extraction</span></div><div class="step"><i class="step-dot"></i><span>Risk Synthesis</span></div><div class="step"><i class="step-dot"></i><span>Dossier Ready</span></div></div></div>
+      </section>
+      <section class="panel dossier" id="dossier" aria-labelledby="dossierTitle">
+        <div class="dossier-head"><div><div class="section-kicker">Intelligence report</div><div class="panel-title" id="dossierTitle">Risk dossier</div></div><div class="live-tag" id="reportStatus"><i></i><span id="reportStatusText">Awaiting input</span></div></div>
+        <div class="idle-state" id="idleState"><div class="idle-orbit"><svg class="idle-shield" viewBox="0 0 24 24" fill="none"><path d="M12 2.8 20 6v5.3c0 5.1-3.4 8.4-8 10-4.6-1.6-8-4.9-8-10V6l8-3.2Z" stroke="currentColor" stroke-width="1.1"/><path d="M12 7v5m0 3h.01" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></div><div class="idle-title">Your assessment will appear here</div><div class="idle-copy">Submit a message or voice clip to generate an explainable risk profile and practical guidance.</div><div class="idle-index">REPORT STATUS · STANDBY</div></div>
+        <div class="report" id="report" aria-live="polite">
+          <div class="result-top"><div class="gauge-wrap"><svg class="gauge" viewBox="0 0 160 160" role="img" aria-label="Risk score gauge"><circle class="gauge-track" cx="80" cy="80" r="74"/><circle class="gauge-value" id="gaugeValue" cx="80" cy="80" r="74"/></svg><div class="gauge-center"><div class="score" id="scoreValue">0</div><div class="score-unit">RISK INDEX</div></div></div><div><div class="verdict" id="verdict">Low Risk</div><div class="scam-type" id="scamType"></div><div class="badges"><span class="badge" id="confidence"></span><span class="badge" id="modeBadge"></span></div><div class="fallback-note" id="fallbackNote">Offline heuristic used · Low confidence. This is not a full AI assessment.</div></div></div>
+          <div class="signals"><div class="subhead"><div class="subhead-title">Signal breakdown</div><div class="subhead-note">INDICATOR STRENGTH / 100</div></div><div class="signal-list" id="signalList"></div></div>
+          <div class="explanation-block"><div class="subhead"><div class="subhead-title">Assessment</div></div><p class="body-copy" id="explanation"></p></div>
+          <div class="flags-block"><div class="subhead"><div class="subhead-title">Observed red flags</div><div class="subhead-note" id="flagCount"></div></div><ul class="flag-list" id="flagList"></ul></div>
+          <div class="action-box"><svg class="action-icon" viewBox="0 0 24 24" fill="none"><path d="M12 3v2m0 14v2m9-9h-2M5 12H3m15.36-6.36-1.42 1.42M7.06 16.94l-1.42 1.42m12.72 0-1.42-1.42M7.06 7.06 5.64 5.64M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg><div><div class="action-label">Recommended next step</div><div class="action-text" id="recommendedAction"></div></div></div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer"><span>SCAMSHIELD AI <span class="footer-mark">·</span> RESPONSIBLE AI</span><span>Signals support judgment; they do not establish identity or intent.</span></footer>
+  </div>
+  <script>
+    (() => {
+      'use strict';
+      const $ = (selector, root = document) => root.querySelector(selector);
+      const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
+      const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const api = { mode: 'text', file: null, scanning: false, animationFrame: 0, objectUrl: null };
+      const samples = {
+        benign: 'Hi Maya, are we still meeting for coffee at 4? I can bring the notes from class.',
+        bank: 'URGENT: Your bank account will be blocked today. Send the OTP you just received to verify your KYC immediately. Do not tell anyone or your account will be frozen.',
+        arrest: 'This is an officer from the cybercrime department. Your identity is linked to a case and you are under digital arrest. Stay on this video call, do not tell your family, and transfer the verification amount now.'
+      };
+      const signalLabels = [
+        ['authority_impersonation', 'Authority impersonation'],
+        ['urgency_isolation', 'Urgency & isolation'],
+        ['credential_payment_trap', 'Credential / payment trap'],
+        ['synthetic_or_script_signals', 'Synthetic / script signals']
+      ];
+
+      function setText(node, value) { node.textContent = value == null ? '' : String(value); }
+      function setHealth(state, message) {
+        const pill = $('#healthPill'); pill.dataset.state = state; setText($('#healthText'), message);
+      }
+      async function checkHealth() {
+        setHealth('checking', 'Checking backend');
+        try {
+          const response = await fetch('/health', { headers: { Accept: 'application/json' } });
+          if (!response.ok) throw new Error('Backend returned ' + response.status);
+          const data = await response.json();
+          if (data.status !== 'ok') throw new Error('Unexpected health response');
+          setHealth('ok', 'Backend connected');
+        } catch (_) { setHealth('down', 'Backend unavailable'); }
+      }
+      $('#healthRetry').addEventListener('click', checkHealth);
+      checkHealth();
+      $('#toggleKey').addEventListener('click', () => {
+        const input = $('#apiKey'); const show = input.type === 'password'; input.type = show ? 'text' : 'password'; setText($('#toggleKey'), show ? 'HIDE' : 'SHOW');
+      });
+      function updateCount() { setText($('#charCount'), `${$('#messageText').value.length.toLocaleString()} / 20,000`); }
+      $('#messageText').addEventListener('input', updateCount);
+      $$('.sample').forEach(button => button.addEventListener('click', () => {
+        $('#messageText').value = samples[button.dataset.sample] || ''; updateCount(); $('#messageText').focus(); hideError();
+      }));
+      function setMode(mode) {
+        api.mode = mode;
+        const isText = mode === 'text';
+        $('#textMode').classList.toggle('active', isText); $('#audioMode').classList.toggle('active', !isText);
+        $('#textMode').setAttribute('aria-selected', String(isText)); $('#audioMode').setAttribute('aria-selected', String(!isText));
+        $('#textPanel').hidden = !isText; $('#audioPanel').hidden = isText; hideError();
+      }
+      $('#textMode').addEventListener('click', () => setMode('text'));
+      $('#audioMode').addEventListener('click', () => setMode('audio'));
+      $('#chooseFile').addEventListener('click', () => $('#audioFile').click());
+      function formatBytes(bytes) { return bytes < 1024 * 1024 ? `${(bytes / 1024).toFixed(0)} KB` : `${(bytes / 1024 / 1024).toFixed(1)} MB`; }
+      function setFile(file) {
+        if (api.objectUrl) URL.revokeObjectURL(api.objectUrl);
+        api.file = file || null;
+        const meta = $('#fileMeta');
+        if (!file) { meta.classList.remove('visible'); $('#audioPreview').removeAttribute('src'); return; }
+        $('#audioFile').files;
+        setText($('#fileName'), file.name); setText($('#fileSize'), formatBytes(file.size));
+        api.objectUrl = URL.createObjectURL(file); $('#audioPreview').src = api.objectUrl; meta.classList.add('visible'); hideError();
+      }
+      $('#audioFile').addEventListener('change', event => setFile(event.target.files[0]));
+      const dropZone = $('#dropZone');
+      ['dragenter','dragover'].forEach(type => dropZone.addEventListener(type, event => { event.preventDefault(); dropZone.classList.add('drag'); }));
+      ['dragleave','drop'].forEach(type => dropZone.addEventListener(type, event => { event.preventDefault(); dropZone.classList.remove('drag'); }));
+      dropZone.addEventListener('drop', event => { const file = event.dataTransfer.files[0]; if (file) { setFile(file); try { const transfer = new DataTransfer(); transfer.items.add(file); $('#audioFile').files = transfer.files; } catch (_) {} } });
+      function showError(message) { setText($('#errorBox'), message); $('#errorBox').classList.add('visible'); }
+      function hideError() { $('#errorBox').classList.remove('visible'); setText($('#errorBox'), ''); }
+      function setBusy(busy) {
+        api.scanning = busy; $('#runScan').disabled = busy; $('#runScan').classList.toggle('busy', busy);
+        setText($('.run-label'), busy ? 'Analyzing signals…' : 'Run Intelligence Scan');
+      }
+      function setPipeline(index, doneThrough = -1) {
+        $$('.step').forEach((step, i) => { step.classList.toggle('active', i === index); step.classList.toggle('done', i <= doneThrough); });
+      }
+      async function runPipeline() {
+        const steps = $$('.step');
+        for (let i = 0; i < steps.length - 1 && api.scanning; i++) {
+          setPipeline(i, i - 1);
+          await new Promise(resolve => setTimeout(resolve, 560));
+        }
+      }
+      function colorFor(verdict) { return verdict === 'High Risk' ? '#ef4444' : verdict === 'Suspicious' ? '#f59e0b' : '#10b981'; }
+      function setTone(verdict) {
+        const tone = colorFor(verdict);
+        document.documentElement.style.setProperty('--tone', tone);
+        document.documentElement.style.setProperty('--glow', verdict === 'High Risk' ? '.10' : verdict === 'Suspicious' ? '.07' : '.045');
+        document.body.dataset.risk = verdict === 'High Risk' ? 'high' : verdict === 'Suspicious' ? 'mid' : 'low';
+      }
+      function tweenCounter(target) {
+        cancelAnimationFrame(api.animationFrame);
+        const el = $('#scoreValue');
+        if (reducedMotion) { setText(el, target); return; }
+        const start = performance.now(), duration = 1000;
+        const tick = now => {
+          const t = Math.min(1, (now - start) / duration); const eased = 1 - Math.pow(1 - t, 3);
+          setText(el, Math.round(target * eased));
+          if (t < 1) api.animationFrame = requestAnimationFrame(tick);
+        };
+        api.animationFrame = requestAnimationFrame(tick);
+      }
+      function renderReport(data) {
+        const score = Math.max(0, Math.min(100, Number(data.risk_score) || 0));
+        const verdict = ['Low Risk','Suspicious','High Risk'].includes(data.verdict) ? data.verdict : 'Suspicious';
+        setTone(verdict); $('#idleState').hidden = true; $('#report').classList.remove('visible'); void $('#report').offsetWidth; $('#report').classList.add('visible');
+        setText($('#verdict'), verdict); setText($('#scamType'), data.scam_type || 'Assessment unavailable');
+        setText($('#confidence'), `CONFIDENCE · ${data.confidence_level || 'Low'}`); setText($('#modeBadge'), `MODE · ${(data.mode || api.mode).toUpperCase()}`);
+        $('#fallbackNote').classList.toggle('visible', Boolean(data.offline_fallback_used));
+        $('#gaugeValue').style.strokeDashoffset = String(465 - 465 * score / 100); tweenCounter(score);
+        const signalScores = data.signal_scores || {};
+        const list = $('#signalList'); list.replaceChildren();
+        signalLabels.forEach(([key, label], index) => {
+          const value = Math.max(0, Math.min(100, Number(signalScores[key]) || 0));
+          const row = document.createElement('div'); row.className = 'signal-row';
+          const name = document.createElement('div'); name.className = 'signal-name'; name.textContent = label;
+          const meter = document.createElement('div'); meter.className = 'meter'; meter.setAttribute('role','meter'); meter.setAttribute('aria-valuemin','0'); meter.setAttribute('aria-valuemax','100'); meter.setAttribute('aria-valuenow',String(value));
+          const fill = document.createElement('div'); fill.className = 'meter-fill'; fill.style.transitionDelay = `${index * 100}ms`; meter.append(fill);
+          const num = document.createElement('div'); num.className = 'signal-num'; num.textContent = String(value);
+          row.append(name,meter,num); list.append(row);
+          requestAnimationFrame(() => { fill.style.width = `${value}%`; });
+        });
+        setText($('#explanation'), data.explanation || 'No explanation was provided.');
+        const flags = Array.isArray(data.red_flags) ? data.red_flags : []; const flagList = $('#flagList'); flagList.replaceChildren();
+        setText($('#flagCount'), `${flags.length} ${flags.length === 1 ? 'ITEM' : 'ITEMS'}`);
+        if (flags.length) flags.slice(0,20).forEach((flag, index) => { const item = document.createElement('li'); item.textContent = String(flag); item.style.setProperty('--delay', `${index * 65}ms`); flagList.append(item); });
+        else { const empty = document.createElement('li'); empty.className = 'no-flags'; empty.textContent = 'No specific red flags were identified.'; flagList.append(empty); }
+        setText($('#recommendedAction'), data.recommended_action || 'Verify independently before acting.');
+        $('#reportStatus').classList.add('ready'); setText($('#reportStatusText'), 'Dossier ready');
+      }
+      async function scan() {
+        if (api.scanning) return;
+        hideError();
+        const form = new FormData(); const apiKey = $('#apiKey').value.trim(); form.append('api_key', apiKey);
+        let endpoint;
+        if (api.mode === 'text') {
+          const text = $('#messageText').value.trim();
+          if (!text) { showError('Enter a suspicious message or call transcript before starting the scan.'); return; }
+          form.append('text', text); endpoint = '/api/analyze-text';
+        } else {
+          if (!api.file) { showError('Choose an audio file before starting the scan.'); return; }
+          if (api.file.size > 20 * 1024 * 1024) { showError('This audio file exceeds the 20 MB upload limit.'); return; }
+          form.append('file', api.file, api.file.name); endpoint = '/api/analyze-audio';
+        }
+        $('#reportStatus').classList.remove('ready'); setText($('#reportStatusText'), 'Analysis in progress'); setBusy(true); setPipeline(0,-1);
+        const pipelinePromise = runPipeline();
+        try {
+          const response = await fetch(endpoint, { method: 'POST', body: form, headers: { Accept: 'application/json' } });
+          let body; try { body = await response.json(); } catch (_) { body = {}; }
+          if (!response.ok) {
+            const details = typeof body.detail === 'string' ? body.detail : 'The backend rejected the request.';
+            const statusHints = {400:'Check the request and API key.',413:'The submitted content is too large.',415:'Use a supported audio format.',502:'The analysis provider returned an error.',503:'The analysis service is unavailable.'};
+            throw new Error(`${details}${statusHints[response.status] ? ` ${statusHints[response.status]}` : ''}`);
+          }
+          await pipelinePromise; renderReport(body); setPipeline(3,3);
+        } catch (error) {
+          setPipeline(-1,-1); $('#reportStatus').classList.remove('ready'); setText($('#reportStatusText'), 'Awaiting input');
+          showError(error instanceof TypeError ? 'Cannot reach the backend. Confirm that FastAPI is running, then reconnect and try again.' : (error.message || 'The analysis could not be completed.'));
+        } finally { setBusy(false); }
+      }
+      $('#runScan').addEventListener('click', scan);
+
+      // Quiet canvas telemetry: sparse drifting points and fine connecting lines.
+      const canvas = $('#ambient'), ctx = canvas.getContext('2d'); let width=0,height=0,scale=1,particles=[]; let lastFrame=0;
+      function resizeCanvas() {
+        if (reducedMotion) return;
+        scale = Math.min(window.devicePixelRatio || 1, 1.5); width=window.innerWidth;height=window.innerHeight;
+        canvas.width=Math.floor(width*scale);canvas.height=Math.floor(height*scale);ctx.setTransform(scale,0,0,scale,0,0);
+        const count=Math.min(50,Math.floor(width*height/26000));
+        particles=Array.from({length:count},()=>({x:Math.random()*width,y:Math.random()*height,vx:(Math.random()-.5)*.075,vy:(Math.random()-.5)*.075,r:Math.random()*1.1+.35}));
+      }
+      function drawTelemetry(time) {
+        if (reducedMotion) return;
+        if (time-lastFrame<32) { requestAnimationFrame(drawTelemetry); return; } lastFrame=time;
+        ctx.clearRect(0,0,width,height); const high=document.body.dataset.risk==='high'; const rgb=high?'239,68,68':'212,175,55';
+        for(let i=0;i<particles.length;i++){
+          const p=particles[i];p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>width)p.vx*=-1;if(p.y<0||p.y>height)p.vy*=-1;
+          ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=`rgba(${rgb},${high?.28:.18})`;ctx.fill();
+          for(let j=i+1;j<particles.length;j++){const q=particles[j],dx=p.x-q.x,dy=p.y-q.y,d=Math.hypot(dx,dy);if(d<115){ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);ctx.strokeStyle=`rgba(${rgb},${(1-d/115)*(high?.055:.035)})`;ctx.lineWidth=.65;ctx.stroke();}}
+        }
+        requestAnimationFrame(drawTelemetry);
+      }
+      resizeCanvas();window.addEventListener('resize',resizeCanvas,{passive:true});if(!reducedMotion)requestAnimationFrame(drawTelemetry);
+    })();
+  </script>
+</body>
+</html>
